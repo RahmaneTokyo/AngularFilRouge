@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { ProfilComponent } from './profil/profil.component';
 import {RequestInterceptorInterceptor} from './request-interceptor.interceptor';
+import { AddProfilComponent } from './profil/add-profil/add-profil.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {RequestInterceptorInterceptor} from './request-interceptor.interceptor';
     NotFoundComponent,
     HomeComponent,
     UnauthorizedComponent,
-    ProfilComponent
+    ProfilComponent,
+    AddProfilComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProfilService} from '../service/profil/profil.service';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {AddProfilComponent} from './add-profil/add-profil.component';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 
 export interface UserData {
   id: string;
@@ -15,7 +20,7 @@ export class ProfilComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'libelle'];
 
-  constructor(private profilService: ProfilService) { }
+  constructor(private profilService: ProfilService, private dialog: MatDialog) { }
 
   profils: any = [];
 
@@ -27,5 +32,13 @@ export class ProfilComponent implements OnInit {
       }
     );
   }
+
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(AddProfilComponent, dialogConfig);
+  }
+
 
 }
