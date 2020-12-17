@@ -1,0 +1,12 @@
+<div class="container d-flex mt-5">
+  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs w-100 bg-white rounded mat-elevation-z4">
+    <mat-tab label="Profil"> <app-profil></app-profil> </mat-tab>
+    <mat-tab label="Users"> Content 2 </mat-tab>
+  </mat-tab-group>
+</div>
+
+<form #userForm="ngForm">
+  <input type="email" placeholder="email" ngModel name="email">
+  <input type="password" placeholder="*****" ngModel name="password">
+  <button class="btn btn-success">Submit</button>
+</form>

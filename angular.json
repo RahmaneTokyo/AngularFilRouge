@@ -20,20 +20,24 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AngularFilRouge",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "outputPath": "dist/AngularFilRouge",
+            "polyfills": "src/polyfills.ts",
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js"
+            ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "tsConfig": "tsconfig.app.json"
           },
           "configurations": {
             "production": {
@@ -94,6 +98,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -127,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "AngularFilRouge"
+  "defaultProject": "AngularFilRouge",
+  "cli": {
+    "analytics": "0aca8789-6a8c-477b-8470-f53156ba9e82"
+  }
 }
