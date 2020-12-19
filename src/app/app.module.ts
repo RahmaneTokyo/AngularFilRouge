@@ -13,6 +13,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { ProfilComponent } from './profil/profil.component';
 import {RequestInterceptorInterceptor} from './request-interceptor.interceptor';
 import { AddProfilComponent } from './profil/add-profil/add-profil.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddProfilComponent } from './profil/add-profil/add-profil.component';
     HomeComponent,
     UnauthorizedComponent,
     ProfilComponent,
-    AddProfilComponent
+    AddProfilComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

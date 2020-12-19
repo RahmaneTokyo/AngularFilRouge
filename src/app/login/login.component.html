@@ -22,7 +22,7 @@
         </mat-form-field>
 
         <div class="form-group mt-3 form-button d-flex justify-content-center ">
-          <button [disabled]="formulaire.invalid" (click)="getToken(formulaire.value)" class="form-submit btn btn-outline-success h-50">Se connecter  <i class="fa fa-sign-in"></i> </button>
+          <button mat-raised-button [disabled]="formulaire.invalid" (click)="getToken(formulaire.value)" class="form-submit btn btn-outline-sonatelgreen h-50">Se connecter  <i class="fa fa-sign-in"></i> </button>
         </div>
 
         <div *ngIf="fakeData">{{loginError}}</div>
