@@ -1,0 +1,45 @@
+<button pButton pRipple icon="pi pi-plus" label="Ajout Referentiel" class="p-button-raised p-button-text p-button-sonatelgreen p-mb-3" routerLink="/home/add-referentiel"></button>
+
+<div class="p-mt-3" *ngFor="let referentiel of referentiels">
+  <div class="p-col-4 p-shadow-8 p-mb-6 p-mr-3" style="width: 23%; float: left;">
+    <div class="p-text-sonatelgreen p-text-bold" style="width: 80%; float: left">{{referentiel.libelle}}</div>
+    <div>
+      <i class="pi pi-pencil p-mr-2" style="color: #008e8e"></i>
+      <i class="pi pi-trash" [class.p-text-danger]="true" (click)="delete(referentiel.id)"></i>
+    </div>
+
+    <p-divider align="center" type="dashed">
+      <i class="p-text-secondary">Presentation</i>
+    </p-divider>
+
+    <p class="p-text-primary">{{referentiel.presentation | summarize: 50}}</p>
+
+    <p-divider align="center" type="dashed">
+      <i class="p-text-secondary">Critère d'admission</i>
+    </p-divider>
+
+    <p class="p-text-primary">{{referentiel.admission}}</p>
+
+    <p-divider align="center" type="dashed">
+      <i class="p-text-secondary">Critère d'évaluation</i>
+    </p-divider>
+
+    <p class="p-text-primary">{{referentiel.evaluation}}</p>
+
+    <p-divider align="center" type="dashed">
+      <i class="p-text-secondary">Programme</i>
+    </p-divider>
+
+    <div class="p-text-center">
+      <button pButton pRipple class=" p-button-raised p-mb-3" label="programme" (click)="openProgramme(referentiel.programme)"></button>
+    </div>
+
+    <p-accordion [multiple]="true">
+      <p-accordionTab header="Groupes de Competences">
+        <div *ngFor="let gpeCompetence of referentiel.gpeCompetence">
+          {{gpeCompetence.libelle}}
+        </div>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="p-field p-col-12 p-md-12">
+  <h1 class="p-text-sonatelgreen p-text-center">Liste des groupes de competence</h1>
+</div>
+
+<button pButton pRipple icon="pi pi-plus" label="Add Groupe Compétence" class="p-button-raised p-button-text p-button-sonatelgreen p-mb-3" routerLink="/home/add-groupe-competence"></button>
+
+<div class="p-mt-3" *ngFor="let groupeCompetence of groupeCompetences">
+  <div class="p-col-4 p-skeleton p-shadow-8 p-mb-6 p-mr-3" style="width: 23%; float: left;">
+    <div class="p-text-sonatelgreen" style="width: 80%; float: left">{{groupeCompetence.libelle}}</div>
+    <div>
+      <i class="pi pi-pencil p-mr-2" style="color: #008e8e"></i>
+      <i class="pi pi-trash" [class.p-text-danger]="true" (click)="delete(groupeCompetence.id)"></i>
+    </div>
+
+    <p-divider align="center" type="dashed">
+      <i class="p-text-secondary">Description</i>
+    </p-divider>
+
+    <p class="p-text-primary">{{groupeCompetence.description | summarize: 50}}</p>
+
+    <p-accordion [multiple]="true">
+      <p-accordionTab header="Competences">
+        <div *ngFor="let competences of groupeCompetence.competence">
+          {{competences.nomCompetence}}
+        </div>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+</div>

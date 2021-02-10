@@ -31,9 +31,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/arya-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "./node_modules/primeflex/primeflex.css",
+              "./node_modules/primeflex/primeflex.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/lodash/lodash.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -127,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "primeNg"
+  "defaultProject": "primeNg",
+  "cli": {
+    "analytics": "43a8df4b-c2c1-4976-ad9f-4df2f601ace3"
+  }
 }

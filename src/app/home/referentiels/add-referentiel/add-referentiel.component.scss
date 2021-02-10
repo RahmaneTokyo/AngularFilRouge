@@ -1,0 +1,28 @@
+$background-color: #ffffff;
+$button-color: #008e8e;
+$button-width: 10em;
+
+label[for="file-input"]{
+  display: block;
+  margin-bottom: 1em;
+  font-size: 1em;
+  color: #fff;
+  opacity: .9;
+  font-weight: bold;
+}
+
+input[type="file"] {
+
+  cursor: pointer !Important;
+
+  &::-webkit-file-upload-button {
+    float: left;
+    background: $button-color;
+    border: 0;
+    padding: 1em 2em;
+    cursor: pointer;
+    color: #fff;
+    border-radius: .2em;
+  }
+
+}

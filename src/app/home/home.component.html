@@ -1,0 +1,16 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <p-avatar [hidden]="!show" [image]="image" class="p-mr-2" size="xlarge"></p-avatar>
+    <p-avatar [hidden]="show" image="../../assets/images/academySA.png" class="p-mr-2" size="xlarge"></p-avatar>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <button #btn type="button" pButton class="p-text-capitalize p-button-outlined p-button-raised p-mr-3" label="{{user.firstname}} {{user.lastname}} ({{user.profil.libelle}})" (click)="menu.toggle($event)"></button>
+    <p-tieredMenu #menu [model]="info" [popup]="true"></p-tieredMenu>
+  </ng-template>
+</p-menubar>
+<div class="container p-mt-5">
+  <router-outlet></router-outlet>
+  <div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+    <button pButton icon="pi pi-chevron-up" class="p-button-raised p-button-sonatelgreen" (click)="scrollToTop()"></button>
+  </div>
+</div>

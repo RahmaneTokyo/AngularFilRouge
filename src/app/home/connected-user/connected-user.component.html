@@ -1,0 +1,44 @@
+<div class="p-field p-col-12 p-md-12">
+  <h1 class="p-text-sonatelgreen p-text-center">Détail de l'utiisateur</h1>
+</div>
+
+<div class="p-grid p-jc-center p-mt-2 p-mb-4">
+
+  <div class="p-field p-shadow-8 p-col-12 p-md-6 p-pr-md-6 p-pr-0" style="width: 80%">
+    <div class="custom-skeleton p-p-4">
+      <div class="p-d-flex p-mb-3">
+        <div class="p-mr-2" [hidden]="!show"> <img class="image" [src]="image"> </div>
+        <div class="p-mr-2" [hidden]="show"> <img class="image" src="../../../../../assets/images/academySA.png"> </div>
+        <div>
+          <div style="width: 15rem" class="p-text-left p-text-bold p-ml-3 p-mt-2">
+            <h1 class="p-text-capitalize">{{ users.firstname }} </h1>
+            <h1 class="p-text-uppercase">{{ users.lastname }} </h1>
+          </div>
+        </div>
+      </div>
+      <div class="p-d-flex p-jc-between p-mb-6 middle">
+        <div>
+          <div class="p-col-12 p-md-12 p-d-flex p-text-left p-text-left">
+            <h5>Email :</h5>
+            <h5 class="p-text-lowercase p-pl-2">{{ users.email }}</h5>
+          </div>
+          <div class="p-col-12 p-md-12 p-d-flex p-text-left p-text-left">
+            <h5>Profil :</h5>
+            <h5 class="p-text-uppercase p-pl-2">{{ users.profil.libelle }}</h5>
+          </div>
+          <div class="p-col-12 p-md-12 p-d-flex p-text-left p-text-left">
+            <h5>Adresse :</h5>
+            <h5 class="p-pl-2">{{ users.address }}</h5>
+          </div>
+        </div>
+        <qrcode [qrdata]="myAngularQrCode" [width]="156" [errorCorrectionLevel]="'M'"></qrcode>
+      </div>
+      <div class="p-d-flex p-jc-between p-mt-3">
+        <button pButton label="Modifier les informations" icon="pi pi-pencil" class="p-button-text p-button-raised p-button-sonatelgreen"></button>
+        <button pButton label="Modifier le mot de passe" icon="pi pi-pencil" class="p-button-text p-button-raised p-button-sonatelgreen"></button>
+        <button pButton label="Cancel" icon="pi pi-times" routerLink="/home/users" class="p-button-text p-button-raised p-button-warning"></button>
+      </div>
+    </div>
+  </div>
+
+</div>

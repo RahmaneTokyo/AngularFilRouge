@@ -1,0 +1,90 @@
+<div class="p-d-flex p-formgrid p-jc-center p-grid">
+
+  <div class="p-field p-col-12 p-text-center p-text-sonatelgreen">
+    <h1> Ajout compétence </h1>
+  </div>
+
+  <form [formGroup]="myForm" class="p-grid" style="width: 70%">
+
+    <!-- Groupe Competence -->
+    <div class="p-field p-col-12 p-mt-2">
+      <p-multiSelect [options]="gpeCompetences" formControlName="gpeComp" defaultLabel="Groupe de Competence" optionValue="@id" optionLabel="libelle" display="chip"></p-multiSelect>
+      <small *ngIf="f.gpeComp.invalid && f.gpeComp.touched" class="p-ml-2 p-text-danger">Selectionnez un groupe de compétence au moins !</small>
+    </div>
+
+    <!-- Nom Competence -->
+    <div class="p-field p-col-12 p-jc-center p-mt-2 p-grid" style="width: 100%">
+      <span class="p-float-label" style="width: 100%">
+        <input formControlName="nomCompetence" id="nomCompetence" type="text" style="width: 70%" pInputText>
+        <label for="nomCompetence">Competence name</label>
+        <small class="p-text-danger p-ml-2" *ngIf="f.nomCompetence.invalid && f.nomCompetence.touched"> Ce champ est requis ! </small>
+      </span>
+    </div>
+
+    <!-- Description -->
+    <div class="p-field p-col-12 p-grid p-mt-2 p-jc-center" style="width: 100%">
+      <span class="p-float-label" style="width: 100%">
+        <textarea formControlName="description" id="description" type="text" rows="2" style="width: 70%" pInputTextarea></textarea>
+        <label for="description">Description</label>
+        <small class="p-text-danger p-ml-2" *ngIf="f.description.invalid && f.description.touched"> Ce champ est requis ! </small>
+      </span>
+    </div>
+
+    <!-- Niveau -->
+    <div class="p-field p-col-12 p-grid p-jc-between ">
+
+      <div class="p-col-4">
+        <h4 class="p-text-center p-text-sonatelgreen">Level 1</h4>
+        <p-divider></p-divider>
+        <span class="p-float-label p-mb-4 p-mt-4">
+          <textarea pInputTextarea style="width: 100%" formControlName="admission1"></textarea>
+          <label>Critere d'Admission</label>
+          <small class="p-text-danger" *ngIf="f.admission1.invalid && f.admission1.touched"> Ce champ est requis ! </small>
+        </span>
+        <span class="p-float-label">
+          <textarea pInputTextarea style="width: 100%" formControlName="evaluation1"></textarea>
+          <label>Critere d'evaluation</label>
+          <small class="p-text-danger" *ngIf="f.evaluation1.invalid && f.evaluation1.touched"> Ce champ est requis ! </small>
+        </span>
+      </div>
+
+      <div class="p-col-4">
+        <h4 class="p-text-center p-text-sonatelgreen">Level 2</h4>
+        <p-divider></p-divider>
+        <span class="p-float-label p-mb-4 p-mt-4">
+          <textarea pInputTextarea style="width: 100%" formControlName="admission2"></textarea>
+          <label>Critere d'Admission</label>
+          <small class="p-text-danger" *ngIf="f.admission2.invalid && f.admission2.touched"> Ce champ est requis ! </small>
+        </span>
+        <span class="p-float-label">
+          <textarea pInputTextarea style="width: 100%" formControlName="evaluation2"></textarea>
+          <label>Critere d'evaluation</label>
+          <small class="p-text-danger" *ngIf="f.evaluation2.invalid && f.evaluation2.touched"> Ce champ est requis ! </small>
+        </span>
+      </div>
+
+      <div class="p-col-4">
+        <h4 class="p-text-center p-text-sonatelgreen">Level 3</h4>
+        <p-divider></p-divider>
+        <span class="p-float-label p-mb-4 p-mt-4">
+          <textarea pInputTextarea style="width: 100%" formControlName="admission3"></textarea>
+          <label>Critere d'Admission</label>
+          <small class="p-text-danger" *ngIf="f.admission3.invalid && f.admission3.touched"> Ce champ est requis ! </small>
+        </span>
+        <span class="p-float-label">
+          <textarea pInputTextarea style="width: 100%" formControlName="evaluation3"></textarea>
+          <label>Critere d'evaluation</label>
+          <small class="p-text-danger" *ngIf="f.evaluation3.invalid && f.evaluation3.touched"> Ce champ est requis ! </small>
+        </span>
+      </div>
+
+    </div>
+
+    <!-- Submit Button -->
+    <div class="p-col-12 p-text-center">
+      <button pButton pRipple icon="pi pi-plus" [disabled]="myForm.invalid" (click)="onSubmit()" label="Create" class="p-button-sonatelgreen p-button-text p-button-raised"></button>
+    </div>
+
+  </form>
+
+</div>

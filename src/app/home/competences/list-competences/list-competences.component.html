@@ -1,0 +1,71 @@
+<div class="p-field p-col-12 p-md-12">
+  <h1 class="p-text-sonatelgreen p-text-center">Liste des compétences</h1>
+</div>
+
+<button pButton pRipple icon="pi pi-plus" label="Create Competence" routerLink="/home/add-competence" class="p-button-raised p-button-text p-mb-5 p-button-sonatelgreen"></button>
+
+<div class="p-mt-3" *ngFor="let c of competences">
+  <div class="p-col-4 p-skeleton p-shadow-8 p-mb-6 p-mr-3" style="width: 23%; float: left;">
+    <div class="p-text-sonatelgreen" style="width: 80%; float: left">{{c.nomCompetence}}</div>
+    <div>
+      <i class="pi pi-pencil p-mr-2" style="color: #008e8e"></i>
+      <i class="pi pi-trash" [class.p-text-danger]="true" (click)="delete(c.id)"></i>
+    </div>
+
+    <p-divider align="center" type="dashed">
+      <i class="p-text-secondary">Description</i>
+    </p-divider>
+
+    <p class="p-text-primary">{{c.description | summarize: 50}}</p>
+
+    <p-accordion [multiple]="true">
+      <p-accordionTab header="Level 1">
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Critère d'admission</i>
+        </p-divider>
+        <div>
+          {{c.niveau[0].admission}}
+        </div>
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Critère d'evaluation</i>
+        </p-divider>
+        <div>
+          {{c.niveau[0].evaluation}}
+        </div>
+      </p-accordionTab>
+      <p-accordionTab header="Level 2">
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Critère d'admission</i>
+        </p-divider>
+        <div>
+          {{c.niveau[1].admission}}
+        </div>
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Critère d'evaluation</i>
+        </p-divider>
+        <div>
+          {{c.niveau[1].evaluation}}
+        </div>
+      </p-accordionTab>
+      <p-accordionTab header="Level 3">
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Critère d'admission</i>
+        </p-divider>
+        <div>
+          {{c.niveau[2].admission}}
+        </div>
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Critère d'evaluation</i>
+        </p-divider>
+        <div>
+          {{c.niveau[2].evaluation}}
+        </div>
+      </p-accordionTab>
+    </p-accordion>
+
+    <div *ngFor="let gpe of c.gpeCompetences">
+      {{ gpe.libelle }}
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="p-text-center">
+
+  <router-outlet></router-outlet>
+
+  <div class="p-field p-col-12 p-md-12">
+    <h1 class="p-text-sonatelgreen">Liste des utiisateurs</h1>
+  </div>
+
+  <button pButton pRipple label="Créer Utilisateur" routerLink="/home/users/add-user" class="p-grid p-mb-4 p-button-sonatelgreen p-button-raised p-button-text"></button>
+
+  <p-table id="excel-table" [globalFilterFields]="['firstname','lastname','email']" [paginator]="true" [rows]="4" [(first)]="first" [value]="users" class="p-shadow-8 p-grid p-mb-6" dataKey="id" >
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="p-text-center" style="color: #008e8e">Prénom</th>
+        <th class="p-text-center" style="color: #008e8e">Nom</th>
+        <th class="p-text-center" style="color: #008e8e">Email</th>
+        <th class="p-text-center" style="color: #008e8e">Address</th>
+        <th class="p-text-center" style="color: #008e8e">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td class="p-text-center p-text-capitalize"> {{ user.firstname }} </td>
+        <td class="p-text-center p-text-uppercase"> {{ user.lastname }} </td>
+        <td class="p-text-center p-text-lowercase"> {{ user.email }} </td>
+        <td class="p-text-center"> {{ user.address }} </td>
+        <td class="p-text-center">
+          <button pButton pRipple type="button" label="Details" class="p-button-text p-button-sonatelgreen p-button-raised" routerLink="/home/users/{{user.id}}"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+      <button pButton pRipple icon="pi pi-refresh" (click)="reset()" class="p-button-text p-button-raised p-button-sonatelgreen p-mr-4" pTooltip="Retour à la première page" tooltipPosition="bottom"></button>
+      <button pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class=" p-mr-3" pTooltip="Télécharger en format Excel" tooltipPosition="bottom"></button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright"></ng-template>
+  </p-table>
+
+</div>
+

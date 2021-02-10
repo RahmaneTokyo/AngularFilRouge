@@ -1,0 +1,23 @@
+<p-table [value]="profilSortie1" [scrollable]="true" [rows]="5" scrollHeight="300px" [virtualScroll]="true" [virtualRowHeight]="34" class="p-shadow-8 p-grid p-mb-6" dataKey="id">
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex p-ml-3" routerLink="/home/profils-sortie">
+      <button pButton pRipple icon="pi pi-chevron-up" label="cancel"></button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="p-text-center" style="color: #008e8e">Prénom</th>
+      <th class="p-text-center" style="color: #008e8e">Nom</th>
+      <th class="p-text-center" style="color: #008e8e">Email</th>
+      <th class="p-text-center" style="color: #008e8e">Address</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-profils>
+    <tr>
+      <td class="p-text-center"> {{ profils.firstname }} </td>
+      <td class="p-text-center"> {{ profils.lastname }} </td>
+      <td class="p-text-center"> {{ profils.email }} </td>
+      <td class="p-text-center"> {{ profils.address }} </td>
+    </tr>
+  </ng-template>
+</p-table>

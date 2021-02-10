@@ -1,0 +1,79 @@
+<div class="p-fluid p-grid p-jc-center p-ai-center p-mb-5 p-formgrid">
+  <form [formGroup]="myForm" (ngSubmit)="submitForm()" class="p-grid p-jc-center p-mb-5 p-fluid">
+
+    <div class="p-field p-col-12 p-md-12">
+      <h1 class="p-text-sonatelgreen">Ajouter un utiisateur</h1>
+    </div>
+
+    <!-- Firstname & Lastname -->
+    <div class="p-field p-col-12 p-md-6 p-mb-5 input">
+      <span class="p-float-label">
+        <input pInputText class="form-control" type="text" name="firstname" formControlName="firstname" id="firstname">
+        <label for="firstname">Firstname</label>
+      </span>
+      <small *ngIf="f.firstname.invalid && f.firstname.touched" class="p-text-danger">This field is mandatory</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6 p-mb-5 input">
+      <span class="p-float-label">
+        <input pInputText class="form-control" type="text" name="lastname" formControlName="lastname" id="lastname">
+        <label for="lastname">Lastname</label>
+      </span>
+      <small *ngIf="f.lastname.invalid && f.lastname.touched" class="p-text-danger">This field is mandatory</small>
+    </div>
+
+    <!-- Email & Password -->
+    <div class="p-field p-col-12 p-md-6 p-mb-5 input">
+      <span class="p-float-label">
+        <input pInputText class="form-control" type="email" name="email" formControlName="email" id="email">
+        <label for="email">Email</label>
+      </span>
+      <small *ngIf="f.email.invalid && f.email.touched" class="p-text-danger">Enter a valid email</small>
+      <small *ngIf="f.email.invalid">{{message}}</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6 p-mb-5 input">
+      <span class="p-float-label">
+        <input pInputText class="form-control" type="password" name="password" formControlName="password" id="password">
+        <label for="password">Password</label>
+      </span>
+      <small *ngIf="f.password.invalid && f.password.touched" class="p-text-danger">You must enter at least 6 characters</small>
+    </div>
+
+    <!-- Address Avatar & Profil -->
+    <div class="p-field p-col-12 p-md-6 p-mb-5 label">
+      <span class="p-float-label">
+        <input pInputText class="form-control" type="text" name="address" formControlName="address" id="address">
+        <label for="address">Address</label>
+      </span>
+      <small *ngIf="f.address.invalid && f.address.touched" class="p-text-danger">This field is mandatory</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6 p-mb-5 labele custom-file">
+      <input type="file" name="avatar" (change)="uploadedFile($event)" accept="image/*" class="custom-file-input" formControlName="avatar" id="avatar">
+      <label class="custom-file-label" for="avatar">Choose an Avatar</label>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6 label">
+      <select class="custom-select" formControlName="profil">
+        <option value="Formateur">Formateur</option>
+        <option value="Apprenant">Apprenant</option>
+        <option value="Admin">Admin</option>
+        <option value="Cm">CM</option>
+      </select>
+      <small *ngIf="f.profil.invalid && f.profil.touched" class="p-text-danger">Please select a profile</small>
+    </div>
+
+    <!-- Captcha Field -->
+    <div class="p-field p-col-12 p-md-12 p-grid p-ai-center p-jc-center">
+      <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="captcha"></ngx-recaptcha2>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="p-field p-col-12 p-md-12 button">
+      <button pButton pRipple [disabled]="myForm.invalid" icon="pi pi-plus" label="Create" class="p-mr-2 p-button-sonatelgreen p-button-text p-button-raised"></button>
+      <button pButton pRipple icon="pi pi-times" label="Cancel" class="p-ml-2 p-button-warning p-button-text p-button-raised" routerLink="/home/users"></button>
+    </div>
+
+  </form>
+</div>

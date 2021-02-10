@@ -1,0 +1,62 @@
+<div class="p-fluid p-formgrid p-grid p-jc-center">
+
+  <div class="p-text-center p-field p-mb-5 p-col-12 p-text-sonatelgreen">
+    <h1> Ajout Referentiel </h1>
+  </div>
+
+  <form [formGroup]="myForm" class="p-grid p-col-9 p-jc-center p-fluid">
+
+    <!-- Libelle -->
+    <div class="p-field p-col-12">
+      <label for="libelle">Libelle</label>
+      <input id="libelle" type="text" formControlName="libelle" pInputText>
+      <small *ngIf="f.libelle.invalid && f.libelle.touched" class="p-text-danger">This field is mandatory</small>
+    </div>
+
+    <!-- Presentation -->
+    <div class="p-d-flex p-jc-between p-col-12">
+      <div class="p-field p-col-4">
+        <label for="presentation">Presentation</label>
+        <textarea id="presentation" type="text" formControlName="presentation" rows="2" pInputTextarea></textarea>
+        <small *ngIf="f.presentation.invalid && f.presentation.touched" class="p-text-danger">This field is mandatory</small>
+      </div>
+
+      <!-- Admission -->
+      <div class="p-field p-col-4">
+        <label for="admission">Critère d'admission</label>
+        <textarea id="admission" type="text" formControlName="admission" rows="2" pInputTextarea></textarea>
+        <small *ngIf="f.admission.invalid && f.admission.touched" class="p-text-danger">This field is mandatory</small>
+      </div>
+
+      <!-- Evaluation -->
+      <div class="p-field p-col-4">
+        <label for="evaluation">Critère d'evaluation</label>
+        <textarea id="evaluation" type="text" formControlName="evaluation" rows="2" pInputTextarea></textarea>
+        <small *ngIf="f.evaluation.invalid && f.evaluation.touched" class="p-text-danger">This field is mandatory</small>
+      </div>
+    </div>
+
+    <!-- Groupe de competences -->
+    <div class="p-col-12 p-field">
+      <p-multiSelect [options]="gpeCompetences" defaultLabel="Groupe de competences" optionLabel="libelle" optionValue="id" display="chip"></p-multiSelect>
+    </div>
+
+    <!-- Programme -->
+    <div class="p-d-flex p-jc-between p-field p-col-7 p-mt-2">
+      <input class="p-grid p-shadow-2 p-col-12 p-pl-0" type="file" name="programme" (change)="onBasicUpload($event)" accept="application/pdf" id="programme">
+    </div>
+    <small class="p-col-12 p-field p-text-center p-text-danger" *ngIf="errorMessage"> {{errorMessage}} </small>
+
+    <!-- Submit -->
+    <div class="p-col-12 p-d-flex p-field p-jc-center">
+      <div class="p-col-4">
+        <button pButton [disabled]="myForm.invalid" (click)="onSubmit()" icon="pi pi-plus" label="Soumettre" class="p-button-sonatelgreen p-button-text p-button-raised" ></button>
+      </div>
+    <div class="p-col-4">
+      <button pButton routerLink="/home/referentiels" icon="pi pi-times" label="Annuler" class="p-button-warning p-button-text p-button-raised" ></button>
+    </div>
+  </div>
+
+  </form>
+
+</div>

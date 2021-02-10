@@ -1,0 +1,40 @@
+<body class="p-grid p-jc-center p-ai-center">
+<!-- Main Content -->
+<div class="p-shadow-12 main-content">
+  <div class="logo p-mt-0 p-grid p-ai-center p-jc-center">
+    <img src="./assets/images/academy.png">
+  </div>
+  <div class="login_form row p-grid p-ai-center p-jc-center">
+
+    <form #formulaire="ngForm" class="p-grid p-jc-center p-fluid login">
+
+      <div class="p-field p-col-12 p-md-12 p-mb-3 input">
+        <span class="p-float-label">
+          <input pInputText email #email="ngModel" ngModel type="email" name="email" id="email" required="">
+          <label for="email">Email</label>
+        </span>
+        <small *ngIf="email.invalid && email.touched" class="p-text-danger p-mb-1">Email is required</small>
+      </div>
+
+      <div class="p-field p-col-12 p-md-12 p-mb-2 input">
+        <span class="p-float-label">
+          <input pInputText password #password="ngModel" ngModel type="password" name="password" id="password" required="">
+          <label for="email">Password</label>
+        </span>
+        <small *ngIf="password.invalid && password.touched" class="p-text-danger">Password is required</small>
+      </div>
+
+      <div class="p-col-4 p-jc-center">
+        <button pButton pRipple [hidden]="logged" [disabled]="formulaire.invalid" (click)="login(formulaire.value)" label="Login" class="p-button-sonatelgreen p-button-text p-button-raised"></button>
+        <p-progressBar *ngIf="logged" mode="indeterminate" class="p-pt-6" [style]="{'height': '10px'}"></p-progressBar>
+      </div>
+
+      <!-- Login Error -->
+      <div class="p-col-12 p-text-danger p-mt-2 p-grid p-jc-center p-mb-4">
+        <h6 class="p-text-center" *ngIf="fakeData"> {{ loginError }} </h6>
+      </div>
+
+    </form>
+  </div>
+</div>
+</body>

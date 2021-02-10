@@ -1,0 +1,41 @@
+<div class="container p-text-center">
+
+  <div class="p-field p-col-12 p-md-12">
+    <h1 class="p-text-sonatelgreen">Liste des profils</h1>
+  </div>
+
+  <form #profil="ngForm" class="p-formgroup-inline p-mb-3">
+    <div class="p-field">
+      <input libelle ngModel #libelle="ngModel" id="libelle" name="libelle" type="text" pInputText placeholder="Create Profile" required>
+      <small class="p-text-danger p-ml-3" *ngIf="libelle.invalid && libelle.touched">This field is mandatory</small>
+      <small class="p-text-danger p-ml-3" *ngIf="fakeData">{{message}}</small>
+    </div>
+    <button pButton [disabled]="profil.invalid" (click)="addProfil(profil.value)" label="Create"></button>
+  </form>
+
+  <p-table [value]="products1" [scrollable]="true" [virtualScroll]="true" scrollHeight="310px" id="excel-table" class="p-shadow-8 p-grid p-mb-6" dataKey="id">
+    <ng-template pTemplate="header">
+      <tr style="font-size: 25px">
+        <th class="p-text-center" style="color: #008e8e">Libelle</th>
+        <th class="p-text-center" style="color: #008e8e">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-products1>
+      <tr>
+        <td class="p-text-center"> {{ products1.libelle }} </td>
+        <td class="p-text-center">
+          <button pButton type="button" label="Users" icon="pi pi-user" class="p-button-text p-button-raised p-button-sonatelgreen" routerLink="/home/profils/{{products1.id}}/users"></button>
+          <button pButton type="button" label="Delete" icon="pi pi-trash" class="p-button-raised p-button-danger p-button-text p-ml-3" (click)="delete(products1.id)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="p-d-flex p-pt-2 p-pb-2 p-pl-3">
+        <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-mr-2"  pTooltip="Télécharger en format Excel" tooltipPosition="bottom"></button>
+      </div>
+    </ng-template>
+  </p-table>
+
+  <router-outlet></router-outlet>
+
+</div>
