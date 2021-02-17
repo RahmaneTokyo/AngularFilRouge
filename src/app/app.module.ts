@@ -40,7 +40,6 @@ import { ListCompetencesComponent } from './home/competences/list-competences/li
 import { GroupeCompetencesComponent } from './home/groupe-competences/groupe-competences.component';
 import { ListGroupeCompetencesComponent } from './home/groupe-competences/list-groupe-competences/list-groupe-competences.component';
 import { DetailCompetenceComponent } from './home/competences/list-competences/detail-competence/detail-competence.component';
-import { EditUserComponent } from './home/users/list-user/detail-user/edit-user/edit-user.component';
 import { AddGroupeCompetenceComponent } from './home/groupe-competences/add-groupe-competence/add-groupe-competence.component';
 import { ProfilsSortieComponent } from './home/profils-sortie/profils-sortie.component';
 import { ListProfilsSortieComponent } from './home/profils-sortie/list-profils-sortie/list-profils-sortie.component';
@@ -48,7 +47,6 @@ import { DetailProfilsSortieComponent } from './home/profils-sortie/list-profils
 import {NgxCaptchaModule} from 'ngx-captcha';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {SkeletonModule} from 'primeng/skeleton';
-import {ScrollTopModule} from 'primeng/scrolltop';
 import {ChipModule} from 'primeng/chip';
 import {ChipsModule} from 'primeng/chips';
 import {InputTextareaModule} from 'primeng/inputtextarea';
@@ -65,6 +63,15 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import { SummarizePipe } from './pipe/summarize/summarize.pipe';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 import { ConnectedUserComponent } from './home/connected-user/connected-user.component';
+import { EditUserComponent } from './home/users/edit-user/edit-user.component';
+import { ArchivedusersComponent } from './home/users/archivedusers/archivedusers.component';
+import { EditPasswordComponent } from './home/connected-user/edit-password/edit-password.component';
+import {PickListModule} from 'primeng/picklist';
+import {TagModule} from 'primeng/tag';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { EditCompetenceComponent } from './home/competences/edit-competence/edit-competence.component';
+import { DetailGroupeCompetenceComponent } from './home/groupe-competences/list-groupe-competences/detail-groupe-competence/detail-groupe-competence.component';
+import { EditGroupeCompetencesComponent } from './home/groupe-competences/edit-groupe-competences/edit-groupe-competences.component';
 
 
 @NgModule({
@@ -84,7 +91,6 @@ import { ConnectedUserComponent } from './home/connected-user/connected-user.com
     GroupeCompetencesComponent,
     ListGroupeCompetencesComponent,
     DetailCompetenceComponent,
-    EditUserComponent,
     AddGroupeCompetenceComponent,
     ProfilsSortieComponent,
     ListProfilsSortieComponent,
@@ -96,7 +102,13 @@ import { ConnectedUserComponent } from './home/connected-user/connected-user.com
     PromosComponent,
     ListPromosComponent,
     SummarizePipe,
-    ConnectedUserComponent
+    ConnectedUserComponent,
+    EditUserComponent,
+    ArchivedusersComponent,
+    EditPasswordComponent,
+    EditCompetenceComponent,
+    DetailGroupeCompetenceComponent,
+    EditGroupeCompetencesComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +145,10 @@ import { ConnectedUserComponent } from './home/connected-user/connected-user.com
     AvatarGroupModule,
     TabMenuModule,
     ProgressBarModule,
-    TieredMenuModule
+    TieredMenuModule,
+    PickListModule,
+    TagModule,
+    ProgressSpinnerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}

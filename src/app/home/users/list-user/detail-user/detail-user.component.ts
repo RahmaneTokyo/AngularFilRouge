@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {UsersService} from '../../../../service/users/users.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import Swal from 'sweetalert2'
+import {Users} from '../../users.model';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-detail-user',
@@ -17,8 +20,9 @@ export class DetailUserComponent implements OnInit {
   constructor(private userService: UsersService, private route: ActivatedRoute, private router: Router) {
   }
 
-  users: any = [];
+  users: Users | any;
   image = '';
+
 
   ngOnInit(): void {
 
@@ -67,13 +71,13 @@ export class DetailUserComponent implements OnInit {
 
   delete(id: number): void {
     Swal.fire({
-      title: 'Are you sure ?',
-      text: "You won't be able to revert this !",
+      title: 'Êtes-vous sûr ?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#008e8e',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it !'
+      confirmButtonText: 'Oui',
+      cancelButtonText: 'Annuler'
     }).then((result) => {
       if (result.isConfirmed) {
         this.userService.deleteUser(id).subscribe(
@@ -82,12 +86,21 @@ export class DetailUserComponent implements OnInit {
           }
         );
         Swal.fire(
-          'Deleted !',
-          'The user has been deleted.',
+          'Suppression réussie',
           'success'
         )
       }
     })
+  }
+
+  print(card: any) {
+    html2canvas(card).then(
+      (canvas) => {
+        const pdf = new jsPDF('landscape');
+        pdf.addImage(canvas.toDataURL("image/jpeg"), 0, 25, 300, 150);
+        pdf.save('user.pdf')
+      }
+    )
   }
 
 }

@@ -1,19 +1,85 @@
-<p-table style="width: 40%; float: left" class="p-grid p-shadow-5" [value]="competences.niveau">
-  <ng-template pTemplate="header">
-    <tr>
-      <th style="color: #008e8e">Levels</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-niveau>
-    <tr>
-      <td>{{niveau.level}}</td>
-    </tr>
-  </ng-template>
-</p-table>
+<div class="p-field p-col-12 p-text-center p-md-12">
+  <h1 class="p-text-sonatelgreen">Détails de la compétence</h1>
+</div>
 
-<p-card class="p-grid p-fluid p-ml-3" style="float: left; color: #008e8e">
-  <p-header class="p-text-sonatelgreen p-m-3" style="font-size: 20px">
-    <b>Description</b>
-  </p-header>
-  <p>{{competences.description}}</p>
-</p-card>
+<div class="p-grid p-jc-center p-mt-2 p-mb-4">
+
+  <div class="p-field p-shadow-8 p-col-12 p-md-6 p-pr-md-6 p-pr-0" style="width: 80%">
+    <div class="custom-skeleton p-p-4">
+      <div class="p-d-flex p-mb-3">
+        <div class="p-col-12 p-text-left p-text-bold p-ml-3 p-mt-2">
+          <h1 class="p-text-capitalize">{{ competences.nomCompetence }}</h1>
+        </div>
+      </div>
+      <div class="p-col-12">
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Description</i>
+        </p-divider>
+        <div>
+          {{competences.description}}
+        </div>
+      </div>
+      <div class="p-d-flex p-col-12 p-jc-between p-my-5">
+        <div class="p-col-4">
+          <h6 class="p-text-center p-text-bold">Niveau 1</h6>
+          <p-divider align="center" type="dashed">
+            <i class="p-text-secondary">Critère d'admission</i>
+          </p-divider>
+          <div>
+            {{competences.niveau[0].admission}}
+          </div>
+          <p-divider align="center" type="dashed">
+            <i class="p-text-secondary">Critère d'evaluation</i>
+          </p-divider>
+          <div>
+            {{competences.niveau[0].evaluation}}
+          </div>
+        </div>
+        <div class="p-col-4">
+          <h6 class="p-text-center p-text-bold">Niveau 2</h6>
+          <p-divider align="center" type="dashed">
+            <i class="p-text-secondary">Critère d'admission</i>
+          </p-divider>
+          <div>
+            {{competences.niveau[1].admission}}
+          </div>
+          <p-divider align="center" type="dashed">
+            <i class="p-text-secondary">Critère d'evaluation</i>
+          </p-divider>
+          <div>
+            {{competences.niveau[1].evaluation}}
+          </div>
+        </div>
+        <div class="p-col-4">
+          <h6 class="p-text-center p-text-bold">Niveau 3</h6>
+          <p-divider align="center" type="dashed">
+            <i class="p-text-secondary">Critère d'admission</i>
+          </p-divider>
+          <div>
+            {{competences.niveau[2].admission}}
+          </div>
+          <p-divider align="center" type="dashed">
+            <i class="p-text-secondary">Critère d'evaluation</i>
+          </p-divider>
+          <div>
+            {{competences.niveau[2].evaluation}}
+          </div>
+        </div>
+      </div>
+      <div class="p-col-12">
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Groupe de compétences</i>
+        </p-divider>
+        <div>
+          <button pButton pRipple class="p-mr-2 p-button-outlined" routerLink="/home/groupe-competence/{{gpe.id}}/detail" *ngFor="let gpe of competences.gpeCompetences" label="{{gpe.libelle}}"></button>
+        </div>
+      </div>
+      <div class="p-d-flex p-jc-between p-mt-3">
+        <button pButton label="Modifier" icon="pi pi-pencil" routerLink="/home/competences/{{competences.id}}/edit" class="p-button-text p-button-raised p-button-sonatelgreen"></button>
+        <button pButton label="Supprimer" icon="pi pi-trash" (click)="delete(competences.id)" class="p-button-text p-button-raised p-button-danger"></button>
+        <button pButton label="Retour" icon="pi pi-times" routerLink="/home/competences" class="p-button-text p-button-raised p-button-warning"></button>
+      </div>
+    </div>
+  </div>
+
+</div>

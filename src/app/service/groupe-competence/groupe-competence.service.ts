@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {GroupeCompetences} from '../../home/groupe-competences/groupe-competences.model';
 import Swal from 'sweetalert2';
 import {Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,10 @@ export class GroupeCompetenceService {
     );
   }
 
+  getGpeCompById(id:number) {
+    return this.http.get(`${this.base_groupe_competence}/${id}`)
+  }
+
   add(gc:GroupeCompetences) {
     return this.http.post(this.base_groupe_competence, gc/*JSON.stringify(gc)*/).subscribe(
       res => {
@@ -46,6 +50,17 @@ export class GroupeCompetenceService {
       err => {
         return err;
       }
+    );
+  }
+
+  editGpeCompetence(gpeComp: any) {
+    return this.http.put(`${this.base_groupe_competence}/${gpeComp.id}`, gpeComp).pipe(
+      map( data => {
+        console.log(data);
+      }),
+      tap(() => {
+        this._refreshNeeded$.next();
+      })
     );
   }
 

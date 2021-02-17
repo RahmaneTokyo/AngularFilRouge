@@ -11,7 +11,6 @@ import {AddUserComponent} from './home/users/add-user/add-user.component';
 import {ListCompetencesComponent} from './home/competences/list-competences/list-competences.component';
 import {ListGroupeCompetencesComponent} from './home/groupe-competences/list-groupe-competences/list-groupe-competences.component';
 import {DetailCompetenceComponent} from './home/competences/list-competences/detail-competence/detail-competence.component';
-import {EditUserComponent} from './home/users/list-user/detail-user/edit-user/edit-user.component';
 import {AddGroupeCompetenceComponent} from './home/groupe-competences/add-groupe-competence/add-groupe-competence.component';
 import {TokenGuard} from './guard/token.guard';
 import {ListProfilsSortieComponent} from './home/profils-sortie/list-profils-sortie/list-profils-sortie.component';
@@ -22,6 +21,12 @@ import {ListReferentielsComponent} from './home/referentiels/list-referentiels/l
 import {AddReferentielComponent} from './home/referentiels/add-referentiel/add-referentiel.component';
 import {ListPromosComponent} from './home/promos/list-promos/list-promos.component';
 import {ConnectedUserComponent} from './home/connected-user/connected-user.component';
+import {EditUserComponent} from './home/users/edit-user/edit-user.component';
+import {ArchivedusersComponent} from './home/users/archivedusers/archivedusers.component';
+import {EditPasswordComponent} from './home/connected-user/edit-password/edit-password.component';
+import {EditCompetenceComponent} from './home/competences/edit-competence/edit-competence.component';
+import {DetailGroupeCompetenceComponent} from './home/groupe-competences/list-groupe-competences/detail-groupe-competence/detail-groupe-competence.component';
+import {EditGroupeCompetencesComponent} from './home/groupe-competences/edit-groupe-competences/edit-groupe-competences.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -36,24 +41,22 @@ const routes: Routes = [
         component: ListProfilsComponent,
         children: [ { path: ':id/users', component: UsersOfOneProfilComponent } ]
       },
+      { path: 'users/archived', component: ArchivedusersComponent },
       {
         path: 'users',
         component: ListUserComponent,
         children: [
-          { path: 'add-user', component: AddUserComponent },
-          {
-            path: ':id',
-            component: DetailUserComponent,
-            children: [
-              { path: 'edit', component: EditUserComponent }
-            ]
-          },
+          { path: ':id', component: DetailUserComponent },
         ]
       },
+      { path: 'users/:id/edit', component: EditUserComponent },
+      { path: 'add-user', component: AddUserComponent },
       { path: 'user/:id', component: ConnectedUserComponent },
+      { path: 'user/:id/password-edit', component: EditPasswordComponent },
       { path: 'groupe-competences', component: ListGroupeCompetencesComponent },
       { path: 'add-groupe-competence', component: AddGroupeCompetenceComponent },
-      { path: 'add-competence', component: AddCompetenceComponent },
+      { path: 'groupe-competence/:id/detail', component: DetailGroupeCompetenceComponent },
+      { path: 'groupe-competence/:id/edit', component: EditGroupeCompetencesComponent },
       {
         path: 'competences',
         component: ListCompetencesComponent,
@@ -61,6 +64,9 @@ const routes: Routes = [
           { path: ':id', component: DetailCompetenceComponent }
         ]
       },
+      { path: 'add-competence', component: AddCompetenceComponent },
+      { path: 'competences/:id/edit', component: EditCompetenceComponent },
+      { path: 'competences/:id/detail', component: DetailCompetenceComponent },
       {
         path: 'profils-sortie',
         component: ListProfilsSortieComponent,

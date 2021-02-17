@@ -7,10 +7,9 @@
   <form #profil="ngForm" class="p-formgroup-inline p-mb-3">
     <div class="p-field">
       <input libelle ngModel #libelle="ngModel" id="libelle" name="libelle" type="text" pInputText placeholder="Create Profile" required>
-      <small class="p-text-danger p-ml-3" *ngIf="libelle.invalid && libelle.touched">This field is mandatory</small>
       <small class="p-text-danger p-ml-3" *ngIf="fakeData">{{message}}</small>
     </div>
-    <button pButton [disabled]="profil.invalid" (click)="addProfil(profil.value)" label="Create"></button>
+    <button pButton [disabled]="profil.invalid" (click)="addProfil(profil.value); profil.reset()" label="Create"></button>
   </form>
 
   <p-table [value]="products1" [scrollable]="true" [virtualScroll]="true" scrollHeight="310px" id="excel-table" class="p-shadow-8 p-grid p-mb-6" dataKey="id">

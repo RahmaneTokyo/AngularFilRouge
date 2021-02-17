@@ -26,6 +26,14 @@ export class ProfilsSortieService {
     return this.http.get(`${this.base_profilsSortie}/${id}`)
   }
 
+  addProfilSortie(form: any): any {
+    return this.http.post(this.base_profilsSortie, form).pipe(
+      tap(() => {
+        this._refreshNeeded$.next();
+      })
+    );
+  }
+
   updateProfilSortie(id: number, libelle: object): any {
     return this.http.put(`${this.base_profilsSortie}/${id}`, libelle).pipe(
       tap(() => {

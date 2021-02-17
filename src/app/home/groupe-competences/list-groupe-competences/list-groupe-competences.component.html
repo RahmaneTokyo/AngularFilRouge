@@ -6,10 +6,11 @@
 
 <div class="p-mt-3" *ngFor="let groupeCompetence of groupeCompetences">
   <div class="p-col-4 p-skeleton p-shadow-8 p-mb-6 p-mr-3" style="width: 23%; float: left;">
-    <div class="p-text-sonatelgreen" style="width: 80%; float: left">{{groupeCompetence.libelle}}</div>
+    <div class="p-text-sonatelgreen" style="width: 70%; float: left">{{groupeCompetence.libelle}}</div>
     <div>
-      <i class="pi pi-pencil p-mr-2" style="color: #008e8e"></i>
-      <i class="pi pi-trash" [class.p-text-danger]="true" (click)="delete(groupeCompetence.id)"></i>
+      <i pTooltip="Détail" tooltipPosition="top" class="pi pi-info-circle p-mr-2" style="color: #008e8e" routerLink="/home/groupe-competence/{{groupeCompetence.id}}/detail"></i>
+      <i pTooltip="Modifier" tooltipPosition="top" class="pi pi-pencil p-mr-2" routerLink="/home/groupe-competence/{{groupeCompetence.id}}/edit" style="color: #008e8e"></i>
+      <i pTooltip="Supprimer" tooltipPosition="top" class="pi pi-trash" [class.p-text-danger]="true" (click)="delete(groupeCompetence.id)"></i>
     </div>
 
     <p-divider align="center" type="dashed">
@@ -20,9 +21,7 @@
 
     <p-accordion [multiple]="true">
       <p-accordionTab header="Competences">
-        <div *ngFor="let competences of groupeCompetence.competence">
-          {{competences.nomCompetence}}
-        </div>
+        <button pButton pRipple routerLink="/home/competences/{{c.id}}/detail" class="p-mr-2 p-my-1 p-button-outlined" *ngFor="let c of groupeCompetence.competence" label="{{c.nomCompetence}}"></button>
       </p-accordionTab>
     </p-accordion>
   </div>

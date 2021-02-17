@@ -10,10 +10,10 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th class="p-text-center" style="color: #008e8e">Prénom</th>
-      <th class="p-text-center" style="color: #008e8e">Nom</th>
-      <th class="p-text-center" style="color: #008e8e">Email</th>
-      <th class="p-text-center" style="color: #008e8e">Address</th>
+      <th pTooltip="Filtrer par le Prénom" tooltipPosition="top" pSortableColumn="firstname" class="p-text-center" style="color: #008e8e">Prénom <p-sortIcon field="firstname"></p-sortIcon></th>
+      <th pTooltip="Filtrer par le Nom" tooltipPosition="top" pSortableColumn="lastname" class="p-text-center" style="color: #008e8e">Nom <p-sortIcon field="lastname"></p-sortIcon></th>
+      <th pTooltip="Filtrer par l'Email" tooltipPosition="top" pSortableColumn="email" class="p-text-center" style="color: #008e8e">Email <p-sortIcon field="email"></p-sortIcon></th>
+      <th pTooltip="Filtrer par l'Adresse" tooltipPosition="top" pSortableColumn="address" class="p-text-center" style="color: #008e8e">Address <p-sortIcon field="address"></p-sortIcon></th>
       <th class="p-text-center" style="color: #008e8e">Action</th>
     </tr>
   </ng-template>

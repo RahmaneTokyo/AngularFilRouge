@@ -2,9 +2,16 @@
   <h1 class="p-text-sonatelgreen p-text-center">Liste des profils de sortie</h1>
 </div>
 
-<div class="container p-text-center">
+<div class="container">
 
-  <p-table [scrollable]="true" scrollHeight="340px" [value]="profilsSortie" id="excel-table" class="p-shadow-8 p-grid p-mb-5 p-mt-6" dataKey="id">
+  <form #profil="ngForm" class="p-formgroup-inline">
+    <div class="p-field">
+      <input libelle ngModel #libelle="ngModel" id="libelle" name="libelle" type="text" pInputText placeholder="Create Profile" required>
+    </div>
+    <button pButton [disabled]="profil.invalid" (click)="addProfilSortie(profil.value); profil.reset()" label="Create"></button>
+  </form>
+
+  <p-table [scrollable]="true" scrollHeight="340px" [value]="profilsSortie" id="excel-table" class="p-shadow-8 p-grid p-mb-5 p-mt-3" dataKey="id">
     <ng-template pTemplate="header">
       <tr style="font-size: 25px">
         <th class="p-text-center" style="color: #008e8e">Libelle</th>

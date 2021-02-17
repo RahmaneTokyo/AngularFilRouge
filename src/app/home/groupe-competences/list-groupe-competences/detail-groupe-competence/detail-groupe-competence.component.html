@@ -1,0 +1,38 @@
+<div class="p-field p-col-12 p-text-center p-md-12">
+  <h1 class="p-text-sonatelgreen">Détails du groupe de compétence</h1>
+</div>
+
+<div class="p-grid p-jc-center p-mt-2 p-mb-4">
+
+  <div class="p-field p-shadow-8 p-col-12 p-md-6 p-pr-md-6 p-pr-0" style="width: 80%">
+    <div class="custom-skeleton p-p-4">
+      <div class="p-d-flex p-mb-3">
+        <div class="p-col-12 p-text-left p-text-bold p-ml-3 p-mt-2">
+          <h1 class="p-text-capitalize">{{ gpeComp.libelle }}</h1>
+        </div>
+      </div>
+      <div class="p-col-12">
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Description</i>
+        </p-divider>
+        <div>
+          {{gpeComp.description}}
+        </div>
+      </div>
+      <div class="p-col-12">
+        <p-divider align="center" type="dashed">
+          <i class="p-text-secondary">Compétences</i>
+        </p-divider>
+        <div>
+          <button pButton pRipple class="p-mr-2 p-button-outlined" routerLink="/home/competence/{{c.id}}/detail" *ngFor="let c of gpeComp.competence" label="{{c.nomCompetence}}"></button>
+        </div>
+      </div>
+      <div class="p-d-flex p-jc-between p-mt-3">
+        <button pButton label="Modifier" icon="pi pi-pencil" routerLink="/home/groupe-competences/{{gpeComp.id}}/edit" class="p-button-text p-button-raised p-button-sonatelgreen"></button>
+        <button pButton label="Supprimer" icon="pi pi-trash" (click)="delete(gpeComp.id)" class="p-button-text p-button-raised p-button-danger"></button>
+        <button pButton label="Retour" icon="pi pi-times" routerLink="/home/groupe-competences" class="p-button-text p-button-raised p-button-warning"></button>
+      </div>
+    </div>
+  </div>
+
+</div>

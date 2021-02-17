@@ -28,12 +28,33 @@ export class UsersService {
     );
   }
 
+  getArchivedUsers() {
+    return this.http.get(`${this.base_url}?archived=true`).pipe(
+      map(
+        res => {
+          return res;
+        }
+      )
+    );
+  }
+
   getUserById(id: number): any {
     return this.http.get(`${this.base_url}/${id}`);
   }
 
   addUser(users: any){
     return this.http.post(this.base_url,users).pipe(
+      map( data => {
+        console.log(data);
+      }),
+      tap(() => {
+        this._refreshNeeded$.next();
+      })
+    );
+  }
+
+  editUser(users: FormData){
+    return this.http.put(`${this.base_url}/${users.get('id')}`,users).pipe(
       map( data => {
         console.log(data);
       }),

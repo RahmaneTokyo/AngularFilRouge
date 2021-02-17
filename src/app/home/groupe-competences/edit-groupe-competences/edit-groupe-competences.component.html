@@ -1,0 +1,32 @@
+
+<div class="p-fluid p-formgrid p-grid p-mt-6">
+
+  <h1 class="p-text-center p-text-sonatelgreen p-col-12 p-mb-5 p-mt-3"> Ajout Groupe de competence </h1>
+
+  <!-- Libelle -->
+  <div class="p-field p-col-12 p-md-6 p-mt-4">
+    <label for="libelle">Libelle</label>
+    <input [(ngModel)]="gpeComp.libelle" id="libelle" type="text" pInputText>
+  </div>
+
+  <!-- Description -->
+  <div class="p-field p-col-12">
+    <label for="description">Description</label>
+    <textarea [(ngModel)]="gpeComp.description" id="description" type="text" rows="2" pInputTextarea></textarea>
+  </div>
+
+  <!-- Competences -->
+  <div class="p-md-6 p-col-6 p-mt-3">
+    <div>
+      <p-multiSelect [options]="competence" [(ngModel)]="Comps" defaultLabel="Competences" optionLabel="nomCompetence" optionValue="id" display="chip"></p-multiSelect>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="p-col-6 p-mt-3">
+    <div class="p-d-flex">
+    <button pButton icon="pi pi-plus" label="Create" class="p-button-sonatelgreen p-button-text p-button-raised" (click)="edit()"></button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,140 @@
+<div class="p-field p-text-center p-col-12">
+  <h1 class="p-text-sonatelgreen">Modifier les données de l'utilisateur</h1>
+</div>
+
+<!-- Avatar de l'utilisateur -->
+<div class="p-field p-d-flex p-jc-center p-col-12">
+  <img class="p-col-3" [src]="image" pTooltip="Avatar de l'utilisateur" tooltipPosition="top">
+</div>
+
+<!-- Prénom & Nom -->
+<div class="p-col-12 p-d-flex p-jc-center">
+  <div class="p-field p-col-5">
+    <span class="p-float-label">
+      <input pInputText class="form-control" [(ngModel)]="users.firstname" type="text" name="firstname" id="firstname">
+      <label for="firstname">Firstname</label>
+    </span>
+  </div>
+
+  <div class="p-field p-col-5">
+    <span class="p-float-label">
+      <input pInputText class="form-control" [(ngModel)]="users.lastname" type="text" name="lastname" id="lastname">
+      <label for="lastname">Lastname</label>
+    </span>
+  </div>
+</div>
+
+<!-- Email & Adresse -->
+<div class="p-col-12 p-d-flex p-jc-center">
+  <div class="p-field p-col-5">
+  <span class="p-float-label">
+    <input pInputText class="form-control" [(ngModel)]="users.email" type="email" name="email" id="email">
+    <label for="email">Email</label>
+  </span>
+  </div>
+
+  <div class="p-field p-col-5">
+  <span class="p-float-label">
+    <input pInputText class="form-control" [(ngModel)]="users.address" type="text" name="address" id="address">
+    <label for="address">Address</label>
+  </span>
+  </div>
+</div>
+
+<!-- Avatar & Profil -->
+<div class="p-col-12 p-d-flex p-jc-center">
+  <div class="p-field p-col-5">
+    <p-fileUpload [auto]="true" mode="basic" chooseLabel="Choisir un avatar" [customUpload]="true" (uploadHandler)="uploadedFile($event)" accept="image/*"></p-fileUpload>
+  </div>
+
+  <div class="p-field p-col-5">
+    <span class="p-float-label">
+      <p-dropdown inputId="libelle" [options]="profils" [(ngModel)]="users.profil" optionValue="libelle" placeholder="Profil" optionLabel="libelle"></p-dropdown>
+      <label>Profil</label>
+    </span>
+  </div>
+</div>
+
+<!-- Bouton De modification et d'annulation -->
+<div class="p-col-12 p-d-flex p-jc-center">
+  <button (click)="submit()" pButton pRipple icon="pi pi-plus" label="Create" class="p-col-3 p-mx-2 p-button-sonatelgreen p-button-text p-button-raised"></button>
+  <button pButton pRipple icon="pi pi-times" label="Cancel" class="p-col-3 p-mx-2 p-button-warning p-button-text p-button-raised" routerLink="/home/users/{{users.id}}"></button>
+</div>
+
+
+<!--
+<div class="p-fluid p-grid p-jc-center p-ai-center p-mb-5 p-formgrid">
+
+  <div class="p-grid p-jc-center p-mb-5 p-fluid">
+
+    <div class="p-field p-col-12 p-md-12">
+      <h1 class="p-text-sonatelgreen">Modifier les données de l'utilisateur</h1>
+    </div>
+
+    &lt;!&ndash;<div class="p-field p-col-12 p-d-flex p-jc-center p-mb-3">
+      <img [src]="image">
+    </div>&ndash;&gt;
+
+    &lt;!&ndash; Firstname & Lastname &ndash;&gt;
+    <div class="p-field p-col-12 p-md-6 p-mb-5 input">
+      <span class="p-float-label">
+        <input pInputText class="form-control" [(ngModel)]="users.firstname" type="text" name="firstname" id="firstname">
+        <label for="firstname">Firstname</label>
+      </span>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6 p-mb-5 input">
+      <span class="p-float-label">
+        <input pInputText class="form-control" [(ngModel)]="users.lastname" type="text" name="lastname" id="lastname">
+        <label for="lastname">Lastname</label>
+      </span>
+    </div>
+
+    &lt;!&ndash; Email & Password &ndash;&gt;
+    <div class="p-field p-col-12 p-md-6 p-mb-5 input">
+      <span class="p-float-label">
+        <input pInputText class="form-control" [(ngModel)]="users.email" type="email" name="email" id="email">
+        <label for="email">Email</label>
+      </span>
+    </div>
+
+    &lt;!&ndash; Address Avatar & Profil &ndash;&gt;
+    <div class="p-field p-col-12 p-md-6 p-mb-5 label">
+      <span class="p-float-label">
+        <input pInputText class="form-control" [(ngModel)]="users.address" type="text" name="address" id="address">
+        <label for="address">Address</label>
+      </span>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6 p-mb-5 labele custom-file">
+      <input type="file" name="avatar" (change)="uploadedFile($event)" [(ngModel)]="'data:image/jpeg;base64,'+users.avatar" accept="image/*" class="custom-file-input" id="avatar">
+      <label class="custom-file-label" for="avatar">Choose an Avatar</label>
+    </div>
+
+    <div class="p-field p-col-12 p-md-3">
+      <p-dropdown inputId="libelle" [options]="profils" [(ngModel)]="users.profil" optionValue="libelle" placeholder="Profil" optionLabel="libelle"></p-dropdown>
+    </div>
+
+    &lt;!&ndash;<div class="p-field p-col-12 p-md-6 label">
+      <select class="custom-select" [(ngModel)]="users.profil.libelle">
+        <option  value="Formateur">Formateur</option>
+        <option  value="Apprenant">Apprenant</option>
+        <option  value="Admin">Admin</option>
+        <option  value="Cm">CM</option>
+      </select>
+    </div>&ndash;&gt;
+
+    &lt;!&ndash; Captcha Field &ndash;&gt;
+    &lt;!&ndash;<div class="p-field p-col-12 p-md-12 p-grid p-ai-center p-jc-center">
+      <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" captcha"></ngx-recaptcha2>
+    </div>&ndash;&gt;
+
+    &lt;!&ndash; Submit Button &ndash;&gt;
+    <div class="p-field p-col-12 p-md-12 button">
+      <button (click)="submit()" pButton pRipple icon="pi pi-plus" label="Create" class="p-mr-2 p-button-sonatelgreen p-button-text p-button-raised"></button>
+      <button pButton pRipple icon="pi pi-times" label="Cancel" class="p-ml-2 p-button-warning p-button-text p-button-raised" routerLink="/home/users/{{users.id}}"></button>
+    </div>
+  </div>
+
+</div>
+-->

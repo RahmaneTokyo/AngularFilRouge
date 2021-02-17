@@ -28,13 +28,11 @@ export class LoginComponent implements OnInit {
     return this.authService.getToken(credentials).subscribe(
       (response: any) => {
         const token = response.token;
-        localStorage.setItem('userToken', token);
         const decodedToken = this.helper.decodeToken (response.token);
-        console.log(decodedToken.id);
-        localStorage.setItem('idUser', decodedToken.id)
-
         const archived = decodedToken.archived;
         if (archived === 0) {
+          localStorage.setItem('userToken', token);
+          localStorage.setItem('idUser', decodedToken.id)
           this.route.navigate(['/home/profils']);
         }else {
           Swal.fire({

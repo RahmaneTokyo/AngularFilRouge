@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ProfilsSortie} from '../profilsSortie.model';
 import {ProfilsSortieService} from '../../../service/profil-sortie/profils-sortie.service';
 import * as XLSX from 'xlsx';
@@ -15,6 +15,7 @@ import {NgForm} from '@angular/forms';
 export class ListProfilsSortieComponent implements OnInit {
 
   profilsSortie: ProfilsSortie[] = [];
+  fakeData = false;
 
   fileName = 'List Profils Sortie.xlsx';
   items: MenuItem[] = [];
@@ -110,18 +111,39 @@ export class ListProfilsSortieComponent implements OnInit {
       }
     })
 
-    /*Swal.fire({
-      title: 'Do you want to proceed ?',
-      text: "You won't be able to revert this !",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#008e8e',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Update !'
-    }).then((result) => {
-      if (result.isConfirmed) {
-      }
-    })*/
   }
 
+  addProfilSortie(myform: NgForm) {
+    console.log(myform);
+    Swal.fire({
+      title: 'Voulez-vous creer ce profil?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Créer',
+      cancelButtonText: 'Annuler'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.profilsSortieService.addProfilSortie(myform).subscribe(
+          (res: any) => {
+            Swal.fire(
+              'Success!',
+              'Création réussie !',
+              'success',
+            )
+            myform.reset();
+            this.router.navigate(['/home/profils'])
+          },
+          (err: any) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: 'Ce profil existe déjà'
+            })
+          }
+        );
+      }
+    })
+  }
 }

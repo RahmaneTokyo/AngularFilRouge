@@ -1,1 +1,19 @@
-<p>list-promos works!</p>
+<p-pickList [source]="sourceProducts" [target]="targetProducts" sourceHeader="Available" targetHeader="Selected" [dragdrop]="true"
+            [responsive]="true" [sourceStyle]="{'height':'300px'}" [targetStyle]="{'height':'300px'}" filterBy="firstname"
+            sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name">
+  <ng-template let-product pTemplate="item">
+    <div class="product-item">
+      <div class="image-container">
+        <img src="assets/showcase/images/demo/product/{{product.image}}" class="product-image" />
+      </div>
+      <div class="product-list-detail">
+        <h5 class="p-mb-2">{{product.firstname}}</h5>
+        <i class="pi pi-tag product-category-icon"></i>
+        <span class="product-category">{{product.lastname}}</span>
+      </div>
+      <div class="product-list-action">
+        <h6 class="p-mb-2">${{product.email}}</h6>
+      </div>
+    </div>
+  </ng-template>
+</p-pickList>

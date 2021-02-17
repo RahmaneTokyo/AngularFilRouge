@@ -12,7 +12,7 @@ export class ConnectedUserComponent implements OnInit {
 
   public myAngularQrCode: any;
 
-  users: Users[] = [];
+  users: any;
   image: any;
   show = false;
 
@@ -29,6 +29,8 @@ export class ConnectedUserComponent implements OnInit {
         }else {
           this.show = false;
         }
+
+        // Code QR
         this.myAngularQrCode = `
               Firstname: ${this.users.firstname}
 

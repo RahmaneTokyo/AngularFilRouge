@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {Competences} from '../../home/competences/competences.model';
 import Swal from 'sweetalert2';
 
@@ -41,12 +41,23 @@ export class CompetencesService {
           {
             icon: 'success',
             title: 'Compétences added!',
-            footer: 'Go to <a href="/home/groupe-competences">Groupe Compétence list</a>'
+            footer: 'Go to <a href="/home/competences">Liste des compétences</a>'
           }
         );
       }
     );
   }
+
+  editCompetence(competences: any) {
+    return this.http.put(`${this.base_competences}/${competences.id}`, competences).pipe(
+      map( data => {
+        console.log(data);
+      }),
+      tap(() => {
+        this._refreshNeeded$.next();
+      })
+    );
+  };
 
   deleteCompetence(id: number): any {
     return this.http.delete(`${this.base_competences}/${id}`);

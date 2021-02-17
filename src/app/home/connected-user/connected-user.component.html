@@ -1,5 +1,5 @@
 <div class="p-field p-col-12 p-md-12">
-  <h1 class="p-text-sonatelgreen p-text-center">Détail de l'utiisateur</h1>
+  <h1 class="p-text-sonatelgreen p-text-center">Détail de l'utilisateur</h1>
 </div>
 
 <div class="p-grid p-jc-center p-mt-2 p-mb-4">
@@ -34,9 +34,9 @@
         <qrcode [qrdata]="myAngularQrCode" [width]="156" [errorCorrectionLevel]="'M'"></qrcode>
       </div>
       <div class="p-d-flex p-jc-between p-mt-3">
-        <button pButton label="Modifier les informations" icon="pi pi-pencil" class="p-button-text p-button-raised p-button-sonatelgreen"></button>
-        <button pButton label="Modifier le mot de passe" icon="pi pi-pencil" class="p-button-text p-button-raised p-button-sonatelgreen"></button>
-        <button pButton label="Cancel" icon="pi pi-times" routerLink="/home/users" class="p-button-text p-button-raised p-button-warning"></button>
+        <button pButton label="Modifier les informations" routerLink="/home/users/{{users.id}}/edit" icon="pi pi-pencil" class="p-button-text p-button-raised p-button-sonatelgreen"></button>
+        <button pButton label="Modifier le mot de passe" routerLink="/home/user/{{users.id}}/password-edit" icon="pi pi-pencil" class="p-button-text p-button-raised p-button-sonatelgreen"></button>
+        <button pButton label="Retour" icon="pi pi-times" routerLink="/home/users" class="p-button-text p-button-raised p-button-warning"></button>
       </div>
     </div>
   </div>

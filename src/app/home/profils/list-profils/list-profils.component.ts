@@ -41,6 +41,7 @@ export class ListProfilsComponent implements OnInit {
   }
 
   addProfil(profil: NgForm): void {
+
     Swal.fire({
       title: 'Voulez-vous creer ce profil?',
       icon: 'warning',
@@ -59,6 +60,13 @@ export class ListProfilsComponent implements OnInit {
               'success',
             )
             this.router.navigate(['/home/profils'])
+          },
+          (err: any) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: 'Ce profil existe déjà'
+            })
           }
         );
       }
@@ -67,13 +75,13 @@ export class ListProfilsComponent implements OnInit {
 
   delete(id: number): void {
     Swal.fire({
-      title: 'Are you sure ?',
-      text: "You won't be able to revert this !",
+      title: 'Êtes-vous sûr ?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#008e8e',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it !'
+      confirmButtonText: 'Oui',
+      cancelButtonText: 'Annuler'
     }).then((result) => {
       if (result.isConfirmed) {
         this.profilService.deleteProfil(id).subscribe(
@@ -82,8 +90,7 @@ export class ListProfilsComponent implements OnInit {
           }
         );
         Swal.fire(
-          'Deleted !',
-          'The item has been deleted.',
+          'Sppression Réussie !',
           'success'
         )
       }

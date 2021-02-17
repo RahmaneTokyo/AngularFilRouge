@@ -1,5 +1,5 @@
 <div class="p-fluid p-grid p-jc-center p-ai-center p-mb-5 p-formgrid">
-  <form [formGroup]="myForm" (ngSubmit)="submitForm()" class="p-grid p-jc-center p-mb-5 p-fluid">
+  <form [formGroup]="myForm" class="p-grid p-jc-center p-mb-5 p-fluid">
 
     <div class="p-field p-col-12 p-md-12">
       <h1 class="p-text-sonatelgreen">Ajouter un utiisateur</h1>
@@ -9,7 +9,7 @@
     <div class="p-field p-col-12 p-md-6 p-mb-5 input">
       <span class="p-float-label">
         <input pInputText class="form-control" type="text" name="firstname" formControlName="firstname" id="firstname">
-        <label for="firstname">Firstname</label>
+        <label for="firstname">Prénom</label>
       </span>
       <small *ngIf="f.firstname.invalid && f.firstname.touched" class="p-text-danger">This field is mandatory</small>
     </div>
@@ -17,12 +17,12 @@
     <div class="p-field p-col-12 p-md-6 p-mb-5 input">
       <span class="p-float-label">
         <input pInputText class="form-control" type="text" name="lastname" formControlName="lastname" id="lastname">
-        <label for="lastname">Lastname</label>
+        <label for="lastname">Nom</label>
       </span>
       <small *ngIf="f.lastname.invalid && f.lastname.touched" class="p-text-danger">This field is mandatory</small>
     </div>
 
-    <!-- Email & Password -->
+    <!-- Email Password & Confirm password -->
     <div class="p-field p-col-12 p-md-6 p-mb-5 input">
       <span class="p-float-label">
         <input pInputText class="form-control" type="email" name="email" formControlName="email" id="email">
@@ -35,32 +35,43 @@
     <div class="p-field p-col-12 p-md-6 p-mb-5 input">
       <span class="p-float-label">
         <input pInputText class="form-control" type="password" name="password" formControlName="password" id="password">
-        <label for="password">Password</label>
+        <label for="password">Mot de passe</label>
       </span>
       <small *ngIf="f.password.invalid && f.password.touched" class="p-text-danger">You must enter at least 6 characters</small>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6 p-mb-5 input">
+      <span class="p-float-label">
+        <input pInputText class="form-control" type="password" name="confpassword" formControlName="confpassword" id="confpassword">
+        <label for="confpassword">Confirmer mot de passe</label>
+      </span>
     </div>
 
     <!-- Address Avatar & Profil -->
     <div class="p-field p-col-12 p-md-6 p-mb-5 label">
       <span class="p-float-label">
         <input pInputText class="form-control" type="text" name="address" formControlName="address" id="address">
-        <label for="address">Address</label>
+        <label for="address">Adresss</label>
       </span>
       <small *ngIf="f.address.invalid && f.address.touched" class="p-text-danger">This field is mandatory</small>
     </div>
 
     <div class="p-field p-col-12 p-md-6 p-mb-5 labele custom-file">
       <input type="file" name="avatar" (change)="uploadedFile($event)" accept="image/*" class="custom-file-input" formControlName="avatar" id="avatar">
-      <label class="custom-file-label" for="avatar">Choose an Avatar</label>
+      <label class="custom-file-label" for="avatar">Choisir un Avatar</label>
     </div>
 
     <div class="p-field p-col-12 p-md-6 label">
-      <select class="custom-select" formControlName="profil">
+      <!--<select class="custom-select" placeholder="Profil" formControlName="profil">
         <option value="Formateur">Formateur</option>
         <option value="Apprenant">Apprenant</option>
         <option value="Admin">Admin</option>
         <option value="Cm">CM</option>
-      </select>
+      </select>-->
+      <span class="p-float-label">
+        <p-dropdown inputId="libelle" [options]="profils" formControlName="profil" optionValue="libelle" placeholder="Profil" optionLabel="libelle"></p-dropdown>
+        <label>Profil</label>
+      </span>
       <small *ngIf="f.profil.invalid && f.profil.touched" class="p-text-danger">Please select a profile</small>
     </div>
 
@@ -70,9 +81,10 @@
     </div>
 
     <!-- Submit Button -->
-    <div class="p-field p-col-12 p-md-12 button">
-      <button pButton pRipple [disabled]="myForm.invalid" icon="pi pi-plus" label="Create" class="p-mr-2 p-button-sonatelgreen p-button-text p-button-raised"></button>
-      <button pButton pRipple icon="pi pi-times" label="Cancel" class="p-ml-2 p-button-warning p-button-text p-button-raised" routerLink="/home/users"></button>
+    <div class="p-field p-col-12 p-d-flex p-jc-center button">
+      <button pButton pRipple icon="pi pi-plus" label="Create" [hidden]="logged" (click)="submitForm()" class="p-mr-2 p-button-text p-button-raised"></button>
+      <button pButton pRipple icon="pi pi-times" label="Cancel" [hidden]="logged" class="p-ml-2 p-button-warning p-button-text p-button-raised" routerLink="/home/users"></button>
+      <p-progressSpinner *ngIf="logged" [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8" animationDuration=".5s"></p-progressSpinner>
     </div>
 
   </form>

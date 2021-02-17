@@ -24,14 +24,14 @@ export class TokenGuard implements CanActivate {
       const expToken = helper.isTokenExpired(token);
       // On execute les actions ci dessous lorsque le token expire
       if (expToken) {
-        sessionStorage.removeItem("userToken");
+        localStorage.removeItem("userToken");
+        window.location.reload();
         this.router.navigate(['/login'])
       }
       return true;
     }
     this.router.navigate(['/login']);
     return false;
-
   }
 
 
